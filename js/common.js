@@ -278,10 +278,10 @@ let addheader = function (headers) {
         header2 = typeof headers[i].subcontent != 'undefined' && headers[i].subcontent != '' ? headers[i].subcontent : header2;
         let source = 'https://sdat-dev.github.io/resources/wiser/assets/images/headers/' + (typeof headers[i].source != 'undefined' && headers[i].source != '' ? headers[i].source + '/' : '');
         if (i == 0) {
-            content += '<div class="carousel-item active">';
+            content += '<div class="item active">';
         }
         else {
-            content += '<div class="carousel-item">';
+            content += '<div class="item">';
         }
         if (header1 == '') {
             content += '<img src="' + source + image + '" class="d-block w-100" alt="...">' +
