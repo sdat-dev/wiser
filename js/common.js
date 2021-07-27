@@ -248,9 +248,13 @@ let getContent = function (webelements){
         }
         else if (type == 'a' && element.hasOwnProperty("style") && element.logo != '') {
             content += '<a target = "_blank" href = "' + element.source + '">' +
-                '<img  img-fluid style="' + element.style + '" src = "https://sdat-dev.github.io/resources/wiser/assets/images/' + element.logo + '">' +
-                '<p>' + element.content + '</p>' +
-                '</a>';
+                '<img  img-fluid style="' + element.style + '" src = "https://sdat-dev.github.io/resources/wiser/assets/images/' + element.logo + '">';
+                if(element.content != '')
+                {
+                    content += '<p>' + element.content + '</p>';
+
+                } 
+                content += '</a>';
         }
         else if (type == 'div') {
             if (element.hasOwnProperty('style'))
