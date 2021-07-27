@@ -252,7 +252,6 @@ let getContent = function (webelements){
                 if(element.content != '')
                 {
                     content += '<p>' + element.content + '</p>';
-
                 } 
                 content += '</a>';
         }
