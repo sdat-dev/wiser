@@ -1,4 +1,4 @@
-let sidemenuItems = [{"item":"ABOUT","link":"about.html"},{"item":"ACADEMIC FOUNDERS","link":"academicfounders.html"},{"item":"LEADERSHIP TEAM","link":"leadershipteam.html"},{"item":"RESEARCHERS","link":"researchers.html"},{"item":"INDUSTRY PARTNERS","link":"industrypartners.html"},{"item":"PRIORITIES","link":"priorities.html"},{"item":"FALL 2021 WORKSHOP","link":"fall2021workshop.html"}]
+let sidemenuItems = [{"item":"ABOUT","link":"about.html"},{"item":"ACADEMIC FOUNDERS","link":"academicfounders.html"},{"item":"LEADERSHIP TEAM","link":"leadershipteam.html"},{"item":"RESEARCHERS","link":"researchers.html"},{"item":"INDUSTRY MEMBERS","link":"industrymembers.html"},{"item":"PRIORITIES","link":"priorities.html"},{"item":"FALL 2021 WORKSHOP","link":"fall2021workshop.html"}]
 //SideMenu Start
 //What evet written  before '//SideMenu Start' will be relace with sidemenuItems in automation scripts
 
