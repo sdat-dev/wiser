@@ -153,7 +153,7 @@ let buildOtherResearchers = function(tabId, tabresearchers){
         let level2Elem = '';
         //filter level2s
         let level2s = tabresearchers.filter(function(researcher){
-            return (researcher["Q16"] == "") ? researcher["Q16_7_TEXT"] == level1 : researcher["Q16"] == level1;
+            return (researcher["UniversityInstitution"] == "") ? "Other" == level1 : researcher["UniversityInstitution"] == level1;
         }); 
         if(level2s.length > 0)
         {
@@ -162,7 +162,7 @@ let buildOtherResearchers = function(tabId, tabresearchers){
             distinctLevel2s.forEach(function(level2){
                 //filter level3 
                 let level3s = level2s.filter(function(researcher){
-                    return (researcher["Q16"] == "") ? researcher.Q19 == level2 : researcher.Q17 == level2;
+                    return (researcher["DepartmentUnitOffice"] == "") ? researcher.DepartmentUnitOffice == level2 : researcher.DepartmentUnitOffice == level2;
                 });
                 level3s.sort((a,b) => b.firstName - a.firstName)
                 //for level2s build simple list
@@ -184,7 +184,7 @@ let buildOtherResearchers = function(tabId, tabresearchers){
 
 let getDistinctOrganizations = function(researchers){
     let mappedAttributes = researchers.map(function(researcher){
-        return  (researcher["Q16"] == "") ? researcher["Q16_7_TEXT"] : researcher["Q16"];
+        return  (researcher["UniversityInstitution"] == "") ? "Other" : researcher["UniversityInstitution"];
     });
     let distinctOrganizations = mappedAttributes.filter(function(v, i, a){
         return a.indexOf(v) === i;
@@ -195,7 +195,7 @@ let getDistinctOrganizations = function(researchers){
 
 let getDistinctDivisions = function(researchers){
     let mappedAttributes = researchers.map(function(researcher){
-        return  (researcher["Q16"] == "") ? researcher.Q19 : researcher.Q17;
+        return  (researcher["DepartmentUnitOffice"] == "") ? researcher.DepartmentUnitOffice : researcher.DepartmentUnitOffice;
     });
     let distinctDivisions = mappedAttributes.filter(function(v, i, a){
         return a.indexOf(v) === i;
@@ -212,12 +212,12 @@ let buildOtherResearcherElements = function(researchers){
         let researcher = researchers[i];
         content +='<div class = "search-container expert-info">'+
         '<img class = "expert-image" src = "https://sdat-dev.github.io/resources/healthequity/assets/images/researchers/' + ((researcher["Q24_Name"] != '' && !researcher["Q24_Name"].includes(".docx"))? researcher.ResponseId+'_'+researcher["Q24_Name"]  : 'placeholder.jpg') +'"/>'+
-        '<h2 class = "content-header-no-margin">'+ (researcher["Q23_9"] == ""? researcher.Q12 + ' '+ researcher.Q11 : '<a class = "no-link-decoration" href = ' + getHttpLink(researcher["Q23_9"]) + '>' + researcher.Q12 + ' '+ researcher.Q11 + '</a>') + '</h2>'+
-        '<h5 class = "content-header-no-margin faculty-title" style = "font-size:20px;">'+ (researcher.Q15 != ''? researcher.Q15 + ',<br>':'') + (researcher.Q19 != ''? researcher.Q19 :'') + '</h5>' +
-        generateLogoContent(researcher) +'<p class = "faculty-description"><strong>Email: </strong> <a class = "email-link" href = mailto:' + researcher.Q13 + 
-        '>'+ researcher.Q13+ '</a><br>'+ (researcher.Q14 != ""? '<strong>Phone: </strong>'+ formatPhone(researcher.Q14) + '<br>': "")+'<strong>Research Interests: </strong>'+ 
-        getResearchInterests(researcher) + '</p><p>' + researcher.Q22 +'</p>'+ generateProjectsContent([researcher["Q31_1"],researcher["Q31_14"],researcher["Q31_15"],researcher["Q31_16"],researcher["Q31_17"]])+
-        generateRelevantCourses([researcher["Q32_1"],researcher["Q32_14"],researcher["Q32_15"],researcher["Q32_16"],researcher["Q32_17"]]) + '<div style="display:none">Counter:' + researcher.Q17 + '</div></div>';
+        '<h2 class = "content-header-no-margin">'+ (researcher["UniversityInstitutionalPage"] == ""? researcher.FirstName + ' '+ researcher.LastName : '<a class = "no-link-decoration" href = ' + getHttpLink(researcher["UniversityInstitutionalPage"]) + '>' + researcher.FirstName + ' '+ researcher.LastName + '</a>') + '</h2>'+
+        '<h5 class = "content-header-no-margin faculty-title" style = "font-size:20px;">'+ (researcher.JobTitle != ''? researcher.JobTitle + ',<br>':'') + (researcher.DepartmentUnitOffice != ''? researcher.DepartmentUnitOffice :'') + '</h5>' +
+        generateLogoContent(researcher) +'<p class = "faculty-description"><strong>Email: </strong> <a class = "email-link" href = mailto:' + researcher.Email2 + 
+        '>'+ researcher.Email2+ '</a><br>'+ (researcher.PhoneNumber != ""? '<strong>Phone: </strong>'+ formatPhone(researcher.PhoneNumber) + '<br>': "")+'<strong>Research Interests: </strong>'+ 
+        getResearchInterests(researcher) + '</p><p>' + researcher.ResearchExpertise +'</p>'+ generateProjectsContent([researcher["Project1"],researcher["Project2"],researcher["Project3"],researcher["Project4"],researcher["Project5"]])+
+        generateRelevantCourses([researcher["Course1"],researcher["Course2"],researcher["Course3"],researcher["Course4"],researcher["Course5"]]);
    }
     return content;
 }
@@ -234,14 +234,14 @@ let generateOtherResearcherTitle = function(researcher){
 }
 
 let generateLogoContent = function(expert){
-    let onlineCVContent = (expert["Q23_4"] == '')?'':
-    '<a href = "'+ expert["Q23_4"] +'"><img src = "https://sdat-dev.github.io/resources/healthequity/assets/images/cv.png"></a>'; 
-    let researchGateContent = (expert["Q23_10"]== '')?'':
-    '<a href = "'+ expert["Q23_10"] +'"><img src = "https://sdat-dev.github.io/resources/healthequity/assets/images/research-gate-logo.png"></a>'; 
-    let googleScholarContent = (expert["Q23_11"] == '')?'':
-    '<a href = "'+ expert["Q23_11"] +'"><img src = "https://sdat-dev.github.io/resources/healthequity/assets/images/google-scholar-logo.png"></a>'; 
-    let otherContent = (expert["Q23_12"] == '')?'':
-    '<a href = "'+ expert["Q23_12"] +'"><img src = "https://sdat-dev.github.io/resources/healthequity/assets/images/link.png"></a>'; 
+    let onlineCVContent = (expert["CV"] == '')?'':
+    '<a href = "'+ expert["CV"] +'"><img src = "https://sdat-dev.github.io/resources/healthequity/assets/images/cv.png"></a>'; 
+    let researchGateContent = (expert["ResearchGate"]== '')?'':
+    '<a href = "'+ expert["ResearchGate"] +'"><img src = "https://sdat-dev.github.io/resources/healthequity/assets/images/research-gate-logo.png"></a>'; 
+    let googleScholarContent = (expert["GoogleScholar"] == '')?'':
+    '<a href = "'+ expert["GoogleScholar"] +'"><img src = "https://sdat-dev.github.io/resources/healthequity/assets/images/google-scholar-logo.png"></a>'; 
+    let otherContent = (expert["Others"] == '')?'':
+    '<a href = "'+ expert["Others"] +'"><img src = "https://sdat-dev.github.io/resources/healthequity/assets/images/link.png"></a>'; 
     let linkContainer = '<div class = "display-flex icon-container">'+
     onlineCVContent + researchGateContent + googleScholarContent + otherContent + '</div>';
     return linkContainer;
@@ -249,10 +249,10 @@ let generateLogoContent = function(expert){
 
 let getResearchInterests = function(expert){
     let interests = "";
-    interests += (expert["Q21_1"] == ''?  "" : expert["Q21_1"] +"; " )+ (expert["Q21_8"] == ''?  "":expert["Q21_8"] +"; ") + 
-    (expert["Q21_9"] == ''?  "": expert["Q21_9"]+"; ") + (expert["Q21_10"]== ''?  "":expert["Q21_10"] +"; " )+
-    (expert["Q21_11"] == ''?  "":expert["Q21_11"] +"; ") + (expert["Q21_12"]== ''?"":expert["Q21_12"]+"; ") +
-     expert["Q21_13"] ; 
+    interests += (expert["Keyword1"] == ''?  "" : expert["Keyword1"] +"; " )+ (expert["Keyword2"] == ''?  "":expert["Keyword2"] +"; ") + 
+    (expert["Keyword3"] == ''?  "": expert["Keyword3"]+"; ") + (expert["Keyword4"]== ''?  "":expert["Keyword4"] +"; " )+
+    (expert["Keyword5"] == ''?  "":expert["Keyword5"] +"; ") + (expert["Keyword6"]== ''?"":expert["Keyword6"]+"; ") +
+     expert["Keyword7"] ; 
     return interests;
 }
 
