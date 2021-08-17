@@ -31,19 +31,19 @@ window.onload = function () {
 let buildResearchersContent = function(experts){
     let content = '';
     let universityResearchers = experts.filter(function(expert){
-        return (expert["Q16"] != "") && (expert.Q16_7_TEXT == "");
+        return (expert["UniversityInstitution"] == "UAlbany") || (expert["UniversityInstitution"] == "Uconn");
     });
     let otherResearchers = experts.filter(function(expert){
-        return (expert["Q16"] == "");
+        return (expert["UniversityInstitution"] != "UAlbany") && (expert["UniversityInstitution"] != "Uconn");
     });
-    let tabattribute = "Q16"
-    let distincttabs = getDistinctAttributes(universityResearchers, 'Q16'); 
+    let tabattribute = "UniversityInstitution"
+    let distincttabs = getDistinctAttributes(universityResearchers, 'UniversityInstitution'); 
     distincttabs.push("Other Organizations");
     content = createTabNavigation(distincttabs, tabattribute);
     let tabContent = [];
     for(let i = 0; i< distincttabs.length; i++){
         let tabexperts = universityResearchers.filter(function(expert){
-            return (expert.Q16 == distincttabs[i]) || (expert["Q16_7_TEXT"] == distincttabs[i]);
+            return expert.UniversityInstitution == distincttabs[i];
         });
         let tabId = "";
         if(distincttabs[i] != "Other Organizations")
@@ -70,7 +70,7 @@ let buildUniversityResearchers = function(tabId, tabexperts){
     let contactElem = '';
     contactElem +=  '<div class = "accordion-container">'+
                         '<div class="panel-group" id = "' + tabId + '" role="tablist" aria-multiselectable="true">';
-    let distinctLevel1s = getDistinctAttributes(tabexperts, 'Q17');
+    let distinctLevel1s = getDistinctAttributes(tabexperts, 'UAlbanyCollegeSchoolDivision');
     distinctLevel1s.sort();
     var index = distinctLevel1s.indexOf("");
     if(index != -1)
@@ -91,12 +91,12 @@ let buildUniversityResearchers = function(tabId, tabexperts){
 
         if(level2s.length > 0)
         {
-            let distinctLevel2s = getDistinctAttributes(level2s, 'Q19');
+            let distinctLevel2s = getDistinctAttributes(level2s, 'DepartmentUnitOffice');
             distinctLevel2s.sort();
             distinctLevel2s.forEach(function(level2){
                 //filter level3 
                 let level3s = level2s.filter(function(expert){
-                    return expert.Q19 == level2;
+                    return expert.DepartmentUnitOffice == level2;
                 });
                 level3s.sort((a,b) => b.firstName - a.firstName)
                 //for level2s build simple list
@@ -123,12 +123,12 @@ let buildUniversityResearcherElements = function(researchers){
         let researcher = researchers[i];
         content +='<div class = "search-container expert-info">'+
         '<img class = "expert-image" src = "https://sdat-dev.github.io/resources/healthequity/assets/images/researchers/' + ((researcher["Q24_Name"] != '' && !researcher["Q24_Name"].includes(".docx"))? researcher.ResponseId+'_'+researcher["Q24_Name"]  : 'placeholder.jpg') +'"/>'+
-        '<h2 class = "content-header-no-margin">'+ (researcher["Q23_9"] == ""? researcher.Q12 + ' '+ researcher.Q11 : '<a class = "no-link-decoration" href = ' + getHttpLink(researcher["Q23_9"]) + '>' + researcher.Q12 + ' '+ researcher.Q11 + '</a>') + '</h2>'+
-        '<h5 class = "content-header-no-margin faculty-title" style = "font-size:20px;">'+ (researcher.Q15 != ''? researcher.Q15 + ',<br>':'') + (researcher.Q19 != ''? researcher.Q19 :'') + '</h5>' +
-        generateLogoContent(researcher) +'<p class = "faculty-description"><strong>Email: </strong> <a class = "email-link" href = mailto:' + researcher.Q13 + 
-        '>'+ researcher.Q13+ '</a><br>'+ (researcher.Q14 != ""? '<strong>Phone: </strong>'+ formatPhone(researcher.Q14) + '<br>': "")+'<strong>Research Interests: </strong>'+ 
-        getResearchInterests(researcher) + '</p><p>' + researcher.Q22 +'</p>'+ generateProjectsContent([researcher["Q31_1"],researcher["Q31_14"],researcher["Q31_15"],researcher["Q31_16"],researcher["Q31_17"]])+
-        generateRelevantCourses([researcher["Q32_1"],researcher["Q32_14"],researcher["Q32_15"],researcher["Q32_16"],researcher["Q32_17"]]) + '<div style="display:none">Counter:' + researcher.Q17 + '</div></div>';
+        '<h2 class = "content-header-no-margin">'+ (researcher["UniversityInstitutionalPage"] == ""? researcher.FirstName + ' '+ researcher.LastName : '<a class = "no-link-decoration" href = ' + getHttpLink(researcher["UniversityInstitutionalPage"]) + '>' + researcher.FirstName + ' '+ researcher.LastName + '</a>') + '</h2>'+
+        '<h5 class = "content-header-no-margin faculty-title" style = "font-size:20px;">'+ (researcher.JobTitle != ''? researcher.JobTitle + ',<br>':'') + (researcher.DepartmentUnitOffice != ''? researcher.DepartmentUnitOffice :'') + '</h5>' +
+        generateLogoContent(researcher) +'<p class = "faculty-description"><strong>Email: </strong> <a class = "email-link" href = mailto:' + researcher.Email2 + 
+        '>'+ researcher.Email2+ '</a><br>'+ (researcher.PhoneNumber != ""? '<strong>Phone: </strong>'+ formatPhone(researcher.PhoneNumber) + '<br>': "")+'<strong>Research Interests: </strong>'+ 
+        getResearchInterests(researcher) + '</p><p>' + researcher.ResearchExpertise +'</p>'+ generateProjectsContent([researcher["Project1"],researcher["Project2"],researcher["Project3"],researcher["Project4"],researcher["Project5"]])+
+        generateRelevantCourses([researcher["Course1"],researcher["Course2"],researcher["Course3"],researcher["Course4"],researcher["Course5"]]);
     }
     return content;
 }
