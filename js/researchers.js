@@ -88,7 +88,6 @@ let buildUniversityResearchers = function(tabId, tabexperts){
         let level2Elem = '';
         //filter level2s
         let level2s = tabexperts.filter(function(expert){
-            expert.UniversityInstitution == "UAlbany"
             return expert.UniversityInstitution == "UAlbany"? expert.UAlbanyCollegeSchoolDivision == level1 :
             expert.UConnCollegeSchool == level1;
         }); 
@@ -132,7 +131,7 @@ let buildUniversityResearcherElements = function(researchers){
         generateLogoContent(researcher) +'<p class = "faculty-description"><strong>Email: </strong> <a class = "email-link" href = mailto:' + researcher.Email2 + 
         '>'+ researcher.Email2+ '</a><br>'+ (researcher.PhoneNumber != ""? '<strong>Phone: </strong>'+ formatPhone(researcher.PhoneNumber) + '<br>': "")+'<strong>Research Interests: </strong>'+ 
         getResearchInterests(researcher) + '</p><p>' + researcher.ResearchExpertise +'</p>'+ generateProjectsContent([researcher["Project1"],researcher["Project2"],researcher["Project3"],researcher["Project4"],researcher["Project5"]])+
-        generateRelevantCourses([researcher["Course1"],researcher["Course2"],researcher["Course3"],researcher["Course4"],researcher["Course5"]]);
+        generateRelevantCourses([researcher["Course1"],researcher["Course2"],researcher["Course3"],researcher["Course4"],researcher["Course5"]]) + '</div>';
     }
     return content;
 }
@@ -222,7 +221,7 @@ let buildOtherResearcherElements = function(researchers){
         generateLogoContent(researcher) +'<p class = "faculty-description"><strong>Email: </strong> <a class = "email-link" href = mailto:' + researcher.Email2 + 
         '>'+ researcher.Email2+ '</a><br>'+ (researcher.PhoneNumber != ""? '<strong>Phone: </strong>'+ formatPhone(researcher.PhoneNumber) + '<br>': "")+'<strong>Research Interests: </strong>'+ 
         getResearchInterests(researcher) + '</p><p>' + researcher.ResearchExpertise +'</p>'+ generateProjectsContent([researcher["Project1"],researcher["Project2"],researcher["Project3"],researcher["Project4"],researcher["Project5"]])+
-        generateRelevantCourses([researcher["Course1"],researcher["Course2"],researcher["Course3"],researcher["Course4"],researcher["Course5"]]);
+        generateRelevantCourses([researcher["Course1"],researcher["Course2"],researcher["Course3"],researcher["Course4"],researcher["Course5"]])+ '</div>';;
    }
     return content;
 }
