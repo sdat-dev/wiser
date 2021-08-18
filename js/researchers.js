@@ -31,10 +31,10 @@ window.onload = function () {
 let buildResearchersContent = function(experts){
     let content = '';
     let universityResearchers = experts.filter(function(expert){
-        return (expert["UniversityInstitution"] == "UAlbany") || (expert["UniversityInstitution"] == "Uconn");
+        return (expert["UniversityInstitution"] == "UAlbany") || (expert["UniversityInstitution"] == "UConn");
     });
     let otherResearchers = experts.filter(function(expert){
-        return (expert["UniversityInstitution"] != "UAlbany") && (expert["UniversityInstitution"] != "Uconn");
+        return (expert["UniversityInstitution"] != "UAlbany") && (expert["UniversityInstitution"] != "UConn");
     });
     let tabattribute = "UniversityInstitution"
     let distincttabs = getDistinctAttributes(universityResearchers, 'UniversityInstitution'); 
@@ -86,7 +86,9 @@ let buildUniversityResearchers = function(tabId, tabexperts){
         let level2Elem = '';
         //filter level2s
         let level2s = tabexperts.filter(function(expert){
-            return expert.Q17 == level1;
+            expert.UniversityInstitution == "UAlbany"
+            return expert.UniversityInstitution == "UAlbany"? expert.UAlbanyCollegeSchoolDivision == level1 :
+            expert.UConnCollegeSchool == level1;
         }); 
 
         if(level2s.length > 0)
@@ -122,7 +124,7 @@ let buildUniversityResearcherElements = function(researchers){
             continue;
         let researcher = researchers[i];
         content +='<div class = "search-container expert-info">'+
-        '<img class = "expert-image" src = "https://sdat-dev.github.io/resources/healthequity/assets/images/researchers/' + ((researcher["Q24_Name"] != '' && !researcher["Q24_Name"].includes(".docx"))? researcher.ResponseId+'_'+researcher["Q24_Name"]  : 'placeholder.jpg') +'"/>'+
+        '<img class = "expert-image" src = "https://sdat-dev.github.io/resources/wiser/assets/images/researchers/' + ((researcher.FileNameofYourPhoto != '' && !researcher["FileNameofYourPhoto"].includes(".docx"))? researcher.FileNameofYourPhoto  : 'placeholder.jpg') +'"/>'+
         '<h2 class = "content-header-no-margin">'+ (researcher["UniversityInstitutionalPage"] == ""? researcher.FirstName + ' '+ researcher.LastName : '<a class = "no-link-decoration" href = ' + getHttpLink(researcher["UniversityInstitutionalPage"]) + '>' + researcher.FirstName + ' '+ researcher.LastName + '</a>') + '</h2>'+
         '<h5 class = "content-header-no-margin faculty-title" style = "font-size:20px;">'+ (researcher.JobTitle != ''? researcher.JobTitle + ',<br>':'') + (researcher.DepartmentUnitOffice != ''? researcher.DepartmentUnitOffice :'') + '</h5>' +
         generateLogoContent(researcher) +'<p class = "faculty-description"><strong>Email: </strong> <a class = "email-link" href = mailto:' + researcher.Email2 + 
@@ -153,7 +155,8 @@ let buildOtherResearchers = function(tabId, tabresearchers){
         let level2Elem = '';
         //filter level2s
         let level2s = tabresearchers.filter(function(researcher){
-            return (researcher["UniversityInstitution"] == "") ? "Other" == level1 : researcher["UniversityInstitution"] == level1;
+            return (researcher.UniversityInstitution == "") ? "Other" == level1 : 
+                                                               researcher.UniversityInstitution == level1;
         }); 
         if(level2s.length > 0)
         {
@@ -162,7 +165,7 @@ let buildOtherResearchers = function(tabId, tabresearchers){
             distinctLevel2s.forEach(function(level2){
                 //filter level3 
                 let level3s = level2s.filter(function(researcher){
-                    return (researcher["DepartmentUnitOffice"] == "") ? researcher.DepartmentUnitOffice == level2 : researcher.DepartmentUnitOffice == level2;
+                    return (researcher["DepartmentUnitOffice"] == "") ? "Other" : researcher.DepartmentUnitOffice == level2;
                 });
                 level3s.sort((a,b) => b.firstName - a.firstName)
                 //for level2s build simple list
@@ -195,7 +198,7 @@ let getDistinctOrganizations = function(researchers){
 
 let getDistinctDivisions = function(researchers){
     let mappedAttributes = researchers.map(function(researcher){
-        return  (researcher["DepartmentUnitOffice"] == "") ? researcher.DepartmentUnitOffice : researcher.DepartmentUnitOffice;
+        return  (researcher.DepartmentUnitOffice == "") ? "Other" : researcher.DepartmentUnitOffice;
     });
     let distinctDivisions = mappedAttributes.filter(function(v, i, a){
         return a.indexOf(v) === i;
@@ -211,7 +214,7 @@ let buildOtherResearcherElements = function(researchers){
             continue;
         let researcher = researchers[i];
         content +='<div class = "search-container expert-info">'+
-        '<img class = "expert-image" src = "https://sdat-dev.github.io/resources/healthequity/assets/images/researchers/' + ((researcher["Q24_Name"] != '' && !researcher["Q24_Name"].includes(".docx"))? researcher.ResponseId+'_'+researcher["Q24_Name"]  : 'placeholder.jpg') +'"/>'+
+        '<img class = "expert-image" src = "https://sdat-dev.github.io/resources/wiser/assets/images/researchers/' + ((researcher.FileNameofYourPhoto != '' && !researcher.FileNameofYourPhoto.includes(".docx"))? researcher.FileNameofYourPhoto  : 'placeholder.jpg') +'"/>'+
         '<h2 class = "content-header-no-margin">'+ (researcher["UniversityInstitutionalPage"] == ""? researcher.FirstName + ' '+ researcher.LastName : '<a class = "no-link-decoration" href = ' + getHttpLink(researcher["UniversityInstitutionalPage"]) + '>' + researcher.FirstName + ' '+ researcher.LastName + '</a>') + '</h2>'+
         '<h5 class = "content-header-no-margin faculty-title" style = "font-size:20px;">'+ (researcher.JobTitle != ''? researcher.JobTitle + ',<br>':'') + (researcher.DepartmentUnitOffice != ''? researcher.DepartmentUnitOffice :'') + '</h5>' +
         generateLogoContent(researcher) +'<p class = "faculty-description"><strong>Email: </strong> <a class = "email-link" href = mailto:' + researcher.Email2 + 
@@ -222,26 +225,15 @@ let buildOtherResearcherElements = function(researchers){
     return content;
 }
 
-let generateOtherResearcherTitle = function(researcher){
-
-    let title = '<h5 class = "content-header-no-margin faculty-title">'+ (researcher.Q15 != ''? researcher.Q15 + ',<br>':'');
-    if(researcher["Q16"] == "")
-        title += (researcher.Q16_7_TEXT != ''? researcher.Q16_7_TEXT + ', ' :'') + (researcher.Q19 != ''? researcher.Q19 :'')  
-    else
-        title +=  (researcher.Q17 == ''? '' : researcher.Q17);
-    title += '</h5>';
-    return title;
-}
-
 let generateLogoContent = function(expert){
     let onlineCVContent = (expert["CV"] == '')?'':
-    '<a href = "'+ expert["CV"] +'"><img src = "https://sdat-dev.github.io/resources/healthequity/assets/images/cv.png"></a>'; 
+    '<a href = "'+ expert["CV"] +'"><img src = "https://sdat-dev.github.io/resources/wiser/assets/images/cv.png"></a>'; 
     let researchGateContent = (expert["ResearchGate"]== '')?'':
-    '<a href = "'+ expert["ResearchGate"] +'"><img src = "https://sdat-dev.github.io/resources/healthequity/assets/images/research-gate-logo.png"></a>'; 
+    '<a href = "'+ expert["ResearchGate"] +'"><img src = "https://sdat-dev.github.io/resources/wiser/assets/images/research-gate-logo.png"></a>'; 
     let googleScholarContent = (expert["GoogleScholar"] == '')?'':
-    '<a href = "'+ expert["GoogleScholar"] +'"><img src = "https://sdat-dev.github.io/resources/healthequity/assets/images/google-scholar-logo.png"></a>'; 
+    '<a href = "'+ expert["GoogleScholar"] +'"><img src = "https://sdat-dev.github.io/resources/wiser/assets/images/google-scholar-logo.png"></a>'; 
     let otherContent = (expert["Others"] == '')?'':
-    '<a href = "'+ expert["Others"] +'"><img src = "https://sdat-dev.github.io/resources/healthequity/assets/images/link.png"></a>'; 
+    '<a href = "'+ expert["Others"] +'"><img src = "https://sdat-dev.github.io/resources/wiser/assets/images/link.png"></a>'; 
     let linkContainer = '<div class = "display-flex icon-container">'+
     onlineCVContent + researchGateContent + googleScholarContent + otherContent + '</div>';
     return linkContainer;
