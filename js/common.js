@@ -133,7 +133,7 @@ let generateAccordionElem = function (level, collapseId, headerId, parentId, chi
                              '</h' + headerno + '>'+
                           '</div>'
                         + '<div id="' + collapseId + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="'+headerId+'">'+
-                            '<div div class="panel-body" id="' + childId + '">'
+                            '<div class="panel-body" id="' + childId + '">'
                               + accordionContent + 
                             '</div>'+
                            '</div>'+

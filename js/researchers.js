@@ -70,7 +70,9 @@ let buildUniversityResearchers = function(tabId, tabexperts){
     let contactElem = '';
     contactElem +=  '<div class = "accordion-container">'+
                         '<div class="panel-group" id = "' + tabId + '" role="tablist" aria-multiselectable="true">';
-    let distinctLevel1s = getDistinctAttributes(tabexperts, 'UAlbanyCollegeSchoolDivision');
+    let distinctLevel1s = tabexperts[0].UniversityInstitution == "UAlbany"? 
+                        getDistinctAttributes(tabexperts, 'UAlbanyCollegeSchoolDivision'):
+                        getDistinctAttributes(tabexperts, 'UConnCollegeSchool');
     distinctLevel1s.sort();
     var index = distinctLevel1s.indexOf("");
     if(index != -1)
