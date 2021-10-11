@@ -72,7 +72,7 @@ let buildUniversityResearchers = function(tabId, tabexperts){
                         '<div class="panel-group" id = "' + tabId + '" role="tablist" aria-multiselectable="true">';
     let distinctLevel1s = tabexperts[0].UniversityInstitution == "UAlbany"? 
                         getDistinctAttributes(tabexperts, 'UAlbanyCollegeSchoolDivision'):
-                        getDistinctAttributes(tabexperts, 'UConnCollegeSchool');
+                        getDistinctAttributes(tabexperts, 'UConnCollegeSchoolDivision');
     distinctLevel1s.sort();
     var index = distinctLevel1s.indexOf("");
     if(index != -1)
@@ -89,17 +89,17 @@ let buildUniversityResearchers = function(tabId, tabexperts){
         //filter level2s
         let level2s = tabexperts.filter(function(expert){
             return expert.UniversityInstitution == "UAlbany"? expert.UAlbanyCollegeSchoolDivision == level1 :
-            expert.UConnCollegeSchool == level1;
+            expert.UConnCollegeSchoolDivision == level1;
         }); 
 
         if(level2s.length > 0)
         {
-            let distinctLevel2s = getDistinctAttributes(level2s, 'DepartmentUnitOffice');
+            let distinctLevel2s = getDistinctAttributes(level2s, 'Department');
             distinctLevel2s.sort();
             distinctLevel2s.forEach(function(level2){
                 //filter level3 
                 let level3s = level2s.filter(function(expert){
-                    return expert.DepartmentUnitOffice == level2;
+                    return expert.Department == level2;
                 });
                 level3s.sort((a,b) => b.firstName - a.firstName)
                 //for level2s build simple list
@@ -127,7 +127,7 @@ let buildUniversityResearcherElements = function(researchers){
         content +='<div class = "search-container expert-info">'+
         '<img class = "expert-image" src = "https://sdat-dev.github.io/resources/wiser/assets/images/researchers/' + researcher.Photo +'"/>'+
         '<h2 class = "content-header-no-margin">'+ (researcher["UniversityInstitutionalPage"] == ""? researcher.FirstName + ' '+ researcher.LastName : '<a class = "no-link-decoration" href = ' + getHttpLink(researcher["UniversityInstitutionalPage"]) + '>' + researcher.FirstName + ' '+ researcher.LastName + '</a>') + '</h2>'+
-        '<h5 class = "content-header-no-margin faculty-title" style = "font-size:20px;">'+ (researcher.JobTitle != ''? researcher.JobTitle + ',<br>':'') + (researcher.DepartmentUnitOffice != ''? researcher.DepartmentUnitOffice :'') + '</h5>' +
+        '<h5 class = "content-header-no-margin faculty-title" style = "font-size:20px;">'+ (researcher.JobTitle != ''? researcher.JobTitle + ',<br>':'') + (researcher.Department != ''? researcher.Department :'') + '</h5>' +
         generateLogoContent(researcher) +'<p class = "faculty-description"><strong>Email: </strong> <a class = "email-link" href = mailto:' + researcher.Email + 
         '>'+ researcher.Email+ '</a><br>'+ (researcher.PhoneNumber != ""? '<strong>Phone: </strong>'+ formatPhone(researcher.PhoneNumber) + '<br>': "")+'<strong>Research Interests: </strong>'+ 
         getResearchInterests(researcher) + '</p><p>' + researcher.ResearchExpertise +'</p>'+ generateProjectsContent([researcher["Project1"],researcher["Project2"],researcher["Project3"],researcher["Project4"],researcher["Project5"]])+
@@ -161,12 +161,12 @@ let buildOtherResearchers = function(tabId, tabresearchers){
         }); 
         if(level2s.length > 0)
         {
-            let distinctLevel2s = getDistinctDivisions(level2s);
+            let distinctLevel2s = getDistinctUniversities(level2s);
             distinctLevel2s.sort();
             distinctLevel2s.forEach(function(level2){
                 //filter level3 
                 let level3s = level2s.filter(function(researcher){
-                    return (researcher["DepartmentUnitOffice"] == "") ? "Other" : researcher.DepartmentUnitOffice == level2;
+                    return (researcher["OtherUniversity"] == "") ? "Other" : researcher.OtherUniversity == level2;
                 });
                 level3s.sort((a,b) => b.firstName - a.firstName)
                 //for level2s build simple list
@@ -197,9 +197,9 @@ let getDistinctOrganizations = function(researchers){
     return distinctOrganizations;
 }
 
-let getDistinctDivisions = function(researchers){
+let getDistinctUniversities = function(researchers){
     let mappedAttributes = researchers.map(function(researcher){
-        return  (researcher.DepartmentUnitOffice == "") ? "Other" : researcher.DepartmentUnitOffice;
+        return  (researcher.OtherUniversity == "") ? "Other" : researcher.OtherUniversity;
     });
     let distinctDivisions = mappedAttributes.filter(function(v, i, a){
         return a.indexOf(v) === i;
@@ -217,7 +217,7 @@ let buildOtherResearcherElements = function(researchers){
         content +='<div class = "search-container expert-info">'+
         '<img class = "expert-image" src = "https://sdat-dev.github.io/resources/wiser/assets/images/researchers/' + researcher.Photo +'"/>'+
         '<h2 class = "content-header-no-margin">'+ (researcher["UniversityInstitutionalPage"] == ""? researcher.FirstName + ' '+ researcher.LastName : '<a class = "no-link-decoration" href = ' + getHttpLink(researcher["UniversityInstitutionalPage"]) + '>' + researcher.FirstName + ' '+ researcher.LastName + '</a>') + '</h2>'+
-        '<h5 class = "content-header-no-margin faculty-title" style = "font-size:20px;">'+ (researcher.JobTitle != ''? researcher.JobTitle + ',<br>':'') + (researcher.DepartmentUnitOffice != ''? researcher.DepartmentUnitOffice :'') + '</h5>' +
+        '<h5 class = "content-header-no-margin faculty-title" style = "font-size:20px;">'+ (researcher.JobTitle != ''? researcher.JobTitle + ',<br>':'') + (researcher.OtherCollegeSchoolDivision != ''? researcher.OtherCollegeSchoolDivision + ',<br>':'')  + (researcher.Department != ''? researcher.Department :'') + '</h5>' +
         generateLogoContent(researcher) +'<p class = "faculty-description"><strong>Email: </strong> <a class = "email-link" href = mailto:' + researcher.Email + 
         '>'+ researcher.Email + '</a><br>'+ (researcher.PhoneNumber != ""? '<strong>Phone: </strong>'+ formatPhone(researcher.PhoneNumber) + '<br>': "")+'<strong>Research Interests: </strong>'+ 
         getResearchInterests(researcher) + '</p><p>' + researcher.ResearchExpertise +'</p>'+ generateProjectsContent([researcher["Project1"],researcher["Project2"],researcher["Project3"],researcher["Project4"],researcher["Project5"]])+
