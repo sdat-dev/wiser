@@ -13,9 +13,12 @@ let addTopHeader = function () {
                 '<div class="field field--name-body field--type-text-with-summary field--label-hidden field--item">'+
                     '<div id="logo">'+
                         '<a aria-label="University at Albany Home" href="https://www.albany.edu">'+
-                            '<img id="albany-logo-minerva" alt="Minerva" src="https://sdat-dev.github.io/resources/healthequity/assets/images/ualbany/albany-logo-minerva.png">'+
-                            '<img id="albany-logo-text" alt="University at Albany" src="https://sdat-dev.github.io/resources/healthequity/assets/images/ualbany/albany-logo-text.png">'+
-                            '<img id="albany-logo-mobile" alt="UAlbany" src="https://sdat-dev.github.io/resources/healthequity/assets/images/ualbany/ualbany-logo.png">'+
+                            '<img id="albany-logo-minerva" alt="Minerva" src="../resources/wiser/assets/images/top-menu/albany-logo-minerva.png">'+
+                            '<img id="albany-logo-mobile" alt="UAlbany" src="../resources/wiser/assets/images/ualbany-logo.png">'+
+                        '</a>'+
+                            '<a aria-label="University of Connecticut Home" href="https://uconn.edu/">'+
+                            '<img id="albany-logo-minerva" alt="Minerva" src="../resources/wiser/assets/images/top-menu/uconn-logo.png">'+
+                            '<img id="albany-logo-mobile" alt="UAlbany" src="../resources/wiser/assets/images/uconn-logo.png">'+
                         '</a>'+
                     '</div>'+
                     '<nav id="top-nav" aria-label="MyUAlbany and Give Links">'+
@@ -27,7 +30,7 @@ let addTopHeader = function () {
                     '<nav id="main-nav" aria-label="Main Navigation Menu">'+
                         '<ul id="main-nav-top">'+
                             '<li><button id="main-nav-toggle"><span class="sr-only">toggle submenu</span></button>'+
-                                '<a href="https://www.albany.edu/academics">Academics</a>'+
+                                '<a href="https://www.albany.edu/academics">Home</a>'+
                                 '<ul>'+
                                     '<li><a href="https://www.albany.edu/schools-colleges-affiliations">Schools &amp; Colleges</a></li>'+
                                     '<li><a href="https://www.albany.edu/academics/undergraduate-programs.shtml">Undergraduate Majors</a></li>'+
