@@ -29,7 +29,7 @@ let addTopHeader = function () {
                     '</nav>'+
                     '<nav id="main-nav" aria-label="Main Navigation Menu">'+
                         '<ul id="main-nav-top">'+
-                            '<li><button id="main-nav-toggle"><span class="sr-only">toggle submenu</span></button>'+
+                            '<li>'+
                                 '<a href="https://www.albany.edu/academics">Home</a>'+
                             '</li>'+
                             '<li><a href="https://www.albany.edu/admissions">Impact<span class="appear"></span></a>'+
