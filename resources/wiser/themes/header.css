@@ -69,7 +69,7 @@
 }
 
 #navbar .search-block-form input.headerSearchBtn {
-    background-color: #EEB211;
+    background-color: #D8E9A8;
     color: #191A19;
     border: none;
     font-family: PublicSans;
@@ -138,7 +138,7 @@ body.drawer-open #navbar .region-mobile-navigation.drawer-nav {
 }
 
 #mobile-nav-holder .mobile-nav-toplink a:hover {
-    background-color: #EEB211;
+    background-color: #D8E9A8;
     color: #191A19;
     font-weight: bold;
 }
@@ -161,7 +161,7 @@ body.drawer-open #navbar .region-mobile-navigation.drawer-nav {
     content: "\f078";
     font-family: FontAwesome;
     color: #fff;
-    background-color: #EEB211;
+    background-color: #D8E9A8;
     padding: 11px;
     transition: max-height 0.2s ease-out;
     margin-right: 10px;
@@ -194,7 +194,7 @@ body.drawer-open #navbar .region-mobile-navigation.drawer-nav {
 
 #mobile-nav-holder ul ul a:hover {
     display: block;
-    background-color: #EEB211;
+    background-color: #D8E9A8;
     color: #191A19;
 }
 
@@ -208,7 +208,7 @@ body.drawer-open #navbar .region-mobile-navigation.drawer-nav {
 }
 
 #mobile-nav-holder ul.extra-nav a:hover {
-    background-color: #EEB211;
+    background-color: #D8E9A8;
     color: #191A19;
 }
 .drawer--navbarTopGutter {
@@ -390,13 +390,13 @@ body {
         margin-left: 1em;
     }
     #navbar #top-nav a {
-        color: #EEB211;
+        color: #D8E9A8;
         transition: background-size 0.15s ease-in;
         padding: 5px;
     }
     #navbar #top-nav a:hover {
         color: #191A19;
-        background-color: #eeb211;
+        background-color: #D8E9A8;
     }
     #block-albany-searchblockbutton {
         top: 16px;
@@ -411,7 +411,7 @@ body {
     }
     #block-albany-searchblockbutton a::before {
         font-size: 0.9em;
-        color: #eeb211;
+        color: #D8E9A8;
         padding: 0 10px 0 6px;
         transition: color 0.5s ease-in-out;
     }
@@ -420,7 +420,7 @@ body {
     }
     #block-albany-searchblockbutton a:hover, #block-albany-searchblockbutton a:hover::before {
         color: #191A19;
-        background-color: #eeb211;
+        background-color: #D8E9A8;
     }
     #navbar .search-block-form {
         position: absolute;
@@ -473,7 +473,7 @@ body {
     }
     #main-nav #main-nav-toggle:hover::after {
         color: #191A19;
-        background-color: #eeb211;
+        background-color: #D8E9A8;
     }
     #main-nav.is-open #main-nav-toggle::after {
         content: "\f077";

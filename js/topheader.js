@@ -13,11 +13,11 @@ let addTopHeader = function () {
                 '<div class="field field--name-body field--type-text-with-summary field--label-hidden field--item">'+
                     '<div id="logo">'+
                         '<a aria-label="University at Albany Home" href="https://www.albany.edu">'+
-                            '<img id="albany-logo-minerva" alt="Minerva" src="../resources/wiser/assets/images/top-menu/albany-logo-minerva.png">'+
+                            '<img id="albany-logo-minerva" alt="UAlbany-Minerva" src="../resources/wiser/assets/images/top-menu/albany-logo-minerva.png">'+
                             '<img id="albany-logo-mobile" alt="UAlbany" src="../resources/wiser/assets/images/ualbany-logo.png">'+
                         '</a>'+
                             '<a aria-label="University of Connecticut Home" href="https://uconn.edu/">'+
-                            '<img id="albany-logo-minerva" alt="Minerva" src="../resources/wiser/assets/images/top-menu/uconn-logo.png">'+
+                            '<img id="albany-logo-minerva" alt="Uconn-Minerva" src="../resources/wiser/assets/images/top-menu/uconn-logo.png">'+
                             '<img id="albany-logo-mobile" alt="UAlbany" src="../resources/wiser/assets/images/uconn-logo.png">'+
                         '</a>'+
                     '</div>'+
@@ -41,7 +41,7 @@ let addTopHeader = function () {
                                     '<li><a href="http://library.albany.edu/">Libraries</a></li>'+
                                 '</ul>'+
                             '</li>'+
-                            '<li><a href="https://www.albany.edu/admissions">Admissions &amp; Aid<span class="appear"></span></a>'+
+                            '<li><a href="https://www.albany.edu/admissions">Impact<span class="appear"></span></a>'+
                                 '<ul>'+
                                     '<li><a href="https://www.albany.edu/admissions-undergraduate">Freshman</a></li>'+
                                     '<li><a href="https://www.albany.edu/admissions-transfer">Transfer</a></li>'+
@@ -54,7 +54,7 @@ let addTopHeader = function () {
                                     '<li><a href="https://www.albany.edu/admissions/tour.php">Visit</a></li>'+
                                 '</ul>'+
                             '</li>'+
-                            '<li><a href="https://www.albany.edu/student-life">Campus Life</a>'+
+                            '<li><a href="https://www.albany.edu/student-life">Uniqueness</a>'+
                                 '<ul>'+
                                     '<li><a href="https://www.albany.edu/housing/index.shtml">Residential Life</a></li>'+
                                     '<li><a href="https://www.albany.edu/pmts">Parking</a></li>'+
@@ -67,7 +67,7 @@ let addTopHeader = function () {
                                     '<li class="disappear"><a href="https://ualbanysports.com/">Athletics</a></li>'+
                                 '</ul>'+
                             '</li>'+
-                            '<li><a href="https://www.albany.edu/about-ualbany">About</a>'+
+                            '<li><a href="https://www.albany.edu/about-ualbany">Research Areas</a>'+
                                 '<ul>'+
                                     '<li><a href="https://www.albany.edu/administration/index.php">Leadership</a></li>'+
                                     '<li><a href="https://www.alumni.albany.edu/">Alumni</a></li>'+
@@ -80,7 +80,7 @@ let addTopHeader = function () {
                                     '<li><a href="https://www.albany.edu/a-z-index">A-Z Index</a></li>'+
                                 '</ul>'+
                             '</li>'+
-                            '<li><a href="https://www.albany.edu/research-ualbany">Research</a>'+
+                            '<li><a href="https://www.albany.edu/research-ualbany">Faculty</a>'+
                                 '<ul>'+
                                     '<li><a href="https://www.albany.edu/research">Division of Research</a></li>'+
                                     '<li><a href="https://www.albany.edu/undergrad-research">Undergraduate Research</a></li>'+
@@ -90,6 +90,30 @@ let addTopHeader = function () {
                                     '-->'+
                                     '<li><a href="https://www.albany.edu/research/research-centers.php">Centers</a></li>'+
                                     '<li><a href="https://www.albany.edu/news-center/experts">Experts</a></li>'+
+                                '</ul>'+
+                            '</li>'+
+                            '<li><a href="https://www.albany.edu/about-ualbany">Advantages of Membership</a>'+
+                                '<ul>'+
+                                    '<li><a href="https://www.albany.edu/administration/index.php">Leadership</a></li>'+
+                                    '<li><a href="https://www.alumni.albany.edu/">Alumni</a></li>'+
+                                '</ul>'+
+                            '</li>'+
+                            '<li><a href="https://www.albany.edu/about-ualbany">Join</a>'+
+                                '<ul>'+
+                                    '<li><a href="https://www.albany.edu/administration/index.php">Leadership</a></li>'+
+                                    '<li><a href="https://www.alumni.albany.edu/">Alumni</a></li>'+
+                                '</ul>'+
+                            '</li>'+
+                            '<li><a href="https://www.albany.edu/about-ualbany">Donate</a>'+
+                                '<ul>'+
+                                    '<li><a href="https://www.albany.edu/administration/index.php">Leadership</a></li>'+
+                                    '<li><a href="https://www.alumni.albany.edu/">Alumni</a></li>'+
+                               '</ul>'+
+                            '</li>'+
+                            '<li><a href="https://www.albany.edu/about-ualbany">Member Login</a>'+
+                                '<ul>'+
+                                    '<li><a href="https://www.albany.edu/administration/index.php">Leadership</a></li>'+
+                                    '<li><a href="https://www.alumni.albany.edu/">Alumni</a></li>'+
                                 '</ul>'+
                             '</li>'+
                             '<li class="appear"><a href="https://ualbanysports.com/">Athletics</a></li>'+
