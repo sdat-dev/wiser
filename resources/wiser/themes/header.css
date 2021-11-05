@@ -373,6 +373,18 @@ body {
         transition-duration: 0.5s;
         transition-timing-function: ease-in-out;
     }
+    #navbar img#albany-logo-text {
+        display: inline-block;
+        padding: 0.5em 0.5em;
+        height: 90px;
+        width:140px;
+        -webkit-transition-property: width height left top background-color;
+        -webkit-transition-duration: 0.5s;
+        -webkit-transition-timing-function: ease-in-out;
+        transition-property: width height left top;
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in-out;
+    }
     #navbar #top-nav {
         position: absolute;
         top: 1.25em;
