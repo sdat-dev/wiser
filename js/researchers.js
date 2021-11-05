@@ -39,7 +39,10 @@ let buildResearchersContent = function(experts){
     let tabattribute = "UniversityInstitution"
     let distincttabs = getDistinctAttributes(universityResearchers, 'UniversityInstitution'); 
     distincttabs.push("Other Organizations");
-    content = createTabNavigation(distincttabs, tabattribute);
+    /**
+     * 
+     */
+    content = '<div class=tabs>' + createTabNavigation(distincttabs, tabattribute);
     let tabContent = [];
     for(let i = 0; i< distincttabs.length; i++){
         let tabexperts = universityResearchers.filter(function(expert){
@@ -59,7 +62,7 @@ let buildResearchersContent = function(experts){
         
     }
 
-    content += buildTabContent(distincttabs, tabattribute, tabContent);
+    content += buildTabContent(distincttabs, tabattribute, tabContent) + '</div>';
     return content;
 }
 
@@ -129,8 +132,8 @@ let buildUniversityResearcherElements = function(researchers){
         '<h2 class = "content-header-no-margin">'+ (researcher["UniversityInstitutionalPage"] == ""? researcher.FirstName + ' '+ researcher.LastName : '<a class = "no-link-decoration" href = ' + getHttpLink(researcher["UniversityInstitutionalPage"]) + '>' + researcher.FirstName + ' '+ researcher.LastName + '</a>') + '</h2>'+
         '<h5 class = "content-header-no-margin faculty-title" style = "font-size:20px;">'+ (researcher.JobTitle != ''? researcher.JobTitle + ',<br>':'') + (researcher.Department != ''? researcher.Department :'') + '</h5>' +
         generateLogoContent(researcher) +'<p class = "faculty-description"><strong>Email: </strong> <a class = "email-link" href = mailto:' + researcher.Email + 
-        '>'+ researcher.Email+ '</a><br>'+ (researcher.PhoneNumber != ""? '<strong>Phone: </strong>'+ formatPhone(researcher.PhoneNumber) + '<br>': "")+'<strong>Research Interests: </strong>'+ 
-        getResearchInterests(researcher) + '</p><p>' + researcher.ResearchExpertise +'</p>'+ generateProjectsContent([researcher["Project1"],researcher["Project2"],researcher["Project3"],researcher["Project4"],researcher["Project5"]])+
+        '>'+ researcher.Email+ '</a><br>'+ (researcher.PhoneNumber != ""? '<strong>Phone: </strong>'+ formatPhone(researcher.PhoneNumber) + '<br>': "")+ '</p><p class="research-areas">' +'<strong>Research Areas: </strong>'+ 
+        getResearchAreas(researcher) + '</p><p>' +'<strong>Research Interests: </strong>'+ getResearchInterests(researcher) + '</p><p>' + researcher.ResearchExpertise +'</p>'+ generateProjectsContent([researcher["Project1"],researcher["Project2"],researcher["Project3"],researcher["Project4"],researcher["Project5"]])+
         generateRelevantCourses([researcher["Course1"],researcher["Course2"],researcher["Course3"],researcher["Course4"],researcher["Course5"]]) + '</div>';
     }
     return content;
@@ -216,11 +219,15 @@ let buildOtherResearcherElements = function(researchers){
         let researcher = researchers[i];
         content +='<div class = "search-container expert-info">'+
         '<img class = "expert-image" src = "https://sdat-dev.github.io/resources/wiser/assets/images/researchers/' + researcher.Photo +'"/>'+
-        '<h2 class = "content-header-no-margin">'+ (researcher["UniversityInstitutionalPage"] == ""? researcher.FirstName + ' '+ researcher.LastName : '<a class = "no-link-decoration" href = ' + getHttpLink(researcher["UniversityInstitutionalPage"]) + '>' + researcher.FirstName + ' '+ researcher.LastName + '</a>') + '</h2>'+
-        '<h5 class = "content-header-no-margin faculty-title" style = "font-size:20px;">'+ (researcher.JobTitle != ''? researcher.JobTitle + ',<br>':'') + (researcher.OtherCollegeSchoolDivision != ''? researcher.OtherCollegeSchoolDivision + ',<br>':'')  + (researcher.Department != ''? researcher.Department :'') + '</h5>' +
+        '<h2 class = "content-header-no-margin">'+ (researcher["UniversityInstitutionalPage"] == ""? researcher.FirstName + ' '+ researcher.LastName : '<a class = "no-link-decoration" href = ' + 
+        getHttpLink(researcher["UniversityInstitutionalPage"]) + '>' + researcher.FirstName + ' '+ researcher.LastName + '</a>') + '</h2>'+
+        '<h5 class = "content-header-no-margin faculty-title" style = "font-size:20px;">'+ (researcher.JobTitle != ''? researcher.JobTitle + ',<br>':'') +
+        (researcher.OtherCollegeSchoolDivision != ''? researcher.OtherCollegeSchoolDivision + ',<br>':'')  + (researcher.Department != ''? researcher.Department :'') + '</h5>' +
         generateLogoContent(researcher) +'<p class = "faculty-description"><strong>Email: </strong> <a class = "email-link" href = mailto:' + researcher.Email + 
-        '>'+ researcher.Email + '</a><br>'+ (researcher.PhoneNumber != ""? '<strong>Phone: </strong>'+ formatPhone(researcher.PhoneNumber) + '<br>': "")+'<strong>Research Interests: </strong>'+ 
-        getResearchInterests(researcher) + '</p><p>' + researcher.ResearchExpertise +'</p>'+ generateProjectsContent([researcher["Project1"],researcher["Project2"],researcher["Project3"],researcher["Project4"],researcher["Project5"]])+
+        '>'+ researcher.Email + '</a><br>'+ (researcher.PhoneNumber != ""? '<strong>Phone: </strong>'+ formatPhone(researcher.PhoneNumber) + '<br>': "")+ '</p><p class="research-areas">'+'<strong>Research Areas: </strong>'+ 
+        getResearchAreas(researcher) + '</p><p>' +'<strong>Research Interests: </strong>'+ 
+        getResearchInterests(researcher) + '</p><p>' + researcher.ResearchExpertise +'</p>'+ 
+        generateProjectsContent([researcher["Project1"],researcher["Project2"],researcher["Project3"],researcher["Project4"],researcher["Project5"]])+
         generateRelevantCourses([researcher["Course1"],researcher["Course2"],researcher["Course3"],researcher["Course4"],researcher["Course5"]])+ '</div>';;
    }
     return content;
@@ -375,6 +382,14 @@ let getHttpLink = function(link){
         result = "https://" + link;
     }
     return result;
+}
+
+let getResearchAreas = function(expert){
+    let areas = "";
+    expert.ResearchAreas.forEach(area =>{
+        areas += area + "; ";
+      }); 
+    return areas;
 }
 
 $('.carousel').carousel({pause: null});

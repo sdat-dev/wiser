@@ -13,13 +13,13 @@ let addTopHeader = function () {
                 '<div class="field field--name-body field--type-text-with-summary field--label-hidden field--item">'+
                     '<div id="logo">'+
                         '<a aria-label="University at Albany Home" href="https://www.albany.edu">'+
-                            '<img id="albany-logo-minerva" alt="UAlbany-Minerva" src="../resources/wiser/assets/images/top-menu/albany-logo-minerva.png">'+
-                            '<img id="albany-logo-mobile" alt="UAlbany" src="../resources/wiser/assets/images/ualbany-logo.png">'+
+                            '<img id="albany-logo-minerva" alt="UAlbany-Minerva" src="https://sdat-dev.github.io/resources/wiser/assets/images/top-menu/albany-logo-minerva.png">'+
+                            '<img id="albany-logo-mobile" alt="UAlbany" src="https://sdat-dev.github.io/resources/wiser/assets/images/ualbany-logo.png">'+
                         '</a>'+
                             '<a aria-label="University of Connecticut Home" href="https://uconn.edu/">'+
-                            '<img id="albany-logo-minerva" alt="Uconn-Minerva" src="../resources/wiser/assets/images/top-menu/uconn-logo-minerva.png">'+
-                            '<img id="albany-logo-mobile" alt="UAlbany" src="../resources/wiser/assets/images/uconn-logo.png">'+
-                            '<img id="albany-logo-text" alt="WISER IUCRC" src="../resources/wiser/assets/images/top-menu/wiser-logo.png">'+
+                            '<img id="albany-logo-minerva" alt="Uconn-Minerva" src="https://sdat-dev.github.io/resources/wiser/assets/images/top-menu/uconn-logo-minerva.png">'+
+                            '<img id="albany-logo-mobile" alt="UAlbany" src="https://sdat-dev.github.io/resources/wiser/assets/images/uconn-logo.png">'+
+                            '<img id="albany-logo-text" alt="WISER IUCRC" src="https://sdat-dev.github.io/resources/wiser/assets/images/top-menu/wiser-logo.png">'+
                         '</a>'+
                     '</div>'+
                     '<nav id="top-nav" aria-label="MyUAlbany and Give Links">'+
