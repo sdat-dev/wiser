@@ -17,8 +17,8 @@ let addTopHeader = function () {
                             '<img id="albany-logo-mobile" alt="UAlbany" src="../resources/wiser/assets/images/ualbany-logo.png">'+
                         '</a>'+
                         '<a aria-label="University of Connecticut Home" href="https://uconn.edu/">'+
-                            '<img id="albany-logo-minerva" alt="Uconn-Minerva" src="../resources/wiser/assets/images/top-menu/uconn-logo-minerva.png">'+
-                            '<img id="albany-logo-mobile" alt="UAlbany" src="../resources/wiser/assets/images/uconn-logo.png">'+
+                            '<img id="albany-logo-minerva" alt="Uconn-Minerva" src="../resources/wiser/assets/images/top-menu/uconn.png">'+
+                            '<img id="albany-logo-mobile" alt="UConn" src="../resources/wiser/assets/images/uconn-logo.png">'+
                             '<img id="albany-logo-text" alt="WISER IUCRC" src="../resources/wiser/assets/images/top-menu/wiser-logo.png">'+
                         '</a>'+
                     '</div>'+
