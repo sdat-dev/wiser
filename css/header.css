@@ -1,0 +1,39 @@
+#uconn-logo-minerva {
+    height: 30px;
+    float: right;
+    padding-right: 20px;
+}
+
+#albany-logo-minerva {
+    height: 30px;
+    padding-left: 20px;
+}
+
+.bk-uconn-blue {
+    background-color: #000e2f;
+}
+
+.header-logo {
+    background-color: #F39422;
+}
+
+.header-title {
+    background-color: #000e2f;
+    color: white;
+    padding-left: 165px;
+    padding-top: 10px;
+}
+
+#header-above-title {
+    font-size: 1.1rem 'Milo', sans-serif;
+}
+
+#header-actual-title {
+    font: 3.5rem 'League Gothic', sans-serif;
+}
+
+.header-position {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
