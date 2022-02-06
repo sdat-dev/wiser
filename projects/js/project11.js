@@ -1,5 +1,5 @@
-let filename = "project3";
-let requestURL = "../data/project3.json";
+let filename = "project11";
+let requestURL = "../data/project11.json";
 let request = new XMLHttpRequest();
 
 //getting content Element to append grants information
