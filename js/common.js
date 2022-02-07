@@ -1,6 +1,7 @@
 let menuItems = [{"item":"Home","link":"home.html"},{"item":"Impact","link":"impact.html"},{"item":"Uniqueness","link":"uniqueness.html"},{"item":"Research Areas","link":"researchareas.html","subItems":[{"item":"Climate Change","link":"climatechange.html"},{"item":"Grid Resilience","link":"gridresilience.html"},{"item":"Renewable Energy","link":"renewableenergy.html"},{"item":"Outage Management","link":"outagemanagement.html"}]},{"item":"Researchers","link":"researchers.html"},{"item":"Planning Workshop","link":"planningworkshop.html"}]
 //Menu Start
 //What evet written  before '//SideMenu Start' will be relace with sidemenuItems in automation scripts
+
 let addTopNav = function (page, markactive = true, extraindirection = false) {
     let topnav = document.getElementById('navbar');
     topnav.classList.add("navbar-expand-lg");
@@ -256,9 +257,9 @@ let getContent = function (webelements, filename) {
         }
         else if (type == 'img') {
             if (element.hasOwnProperty('style'))
-            content += '<img src="https://sdat-dev.github.io/resources/wiser/assets/images/' + element.content + '" alt="" style="' + element.style + '">';
+                content += '<img src="https://sdat-dev.github.io/resources/wiser/assets/images/' + filename + '/' + element.content + '" alt="" style="' + element.style + '">';
             else
-            content += '<img src="https://sdat-dev.github.io/resources/wiser/assets/images/' + element.content + '" alt="" style="width: 100%;">';
+                content += '<img src="https://sdat-dev.github.io/resources/wiser/assets/images/' + filename + '/' + element.content + '" alt="" style="width: 100%;">';
         }
         else if (type == 'iframe') {
             content += '<iframe ' + element.content + '></iframe>';
@@ -297,7 +298,7 @@ let getContent = function (webelements, filename) {
         }
         else if (type == 'a' && element.hasOwnProperty("style") && element.logo != '') {
             content += '<a target = "_blank" href = "' + element.source + '">' +
-            '<img  img-fluid style="' + element.style + '" src = "https://sdat-dev.github.io/resources/wiser/assets/images/' + element.logo + '">';
+                '<img  img-fluid style="' + element.style + '" src = "https://sdat-dev.github.io/resources/wiser/assets/images/' + filename + '/' + element.logo + '">';
             if (element.content != '') {
                 content += '<p>' + element.content + '</p>';
             }
