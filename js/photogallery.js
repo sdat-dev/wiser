@@ -52,7 +52,6 @@ let buildGallery = function(images){
       '/>';
     });
     return content;
-}
 
 $('.carousel').carousel({
     pause: "false",
