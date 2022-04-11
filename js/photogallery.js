@@ -3,20 +3,20 @@ window.onload = function () {
     let requestURL = "data/photogallery.json";
     let imageDirMusiciansURL = "data/imageDirMusicians.json";
     let imageDirWISERindustryURL = "data/imageDirWISERindustry.json";
-    let imageDirWISERpresentationsURL = "data/imageDirWISERpresentations.json";
+    let imageDirWISERreceptionURL = "data/imageDirWISERreception.json";
     let imageDirWISERteamURL = "data/imageDirWISERteam.json";
     let request = axios.get(requestURL);
     let Musicians = axios.get(imageDirMusiciansURL);
     let WISERindustry = axios.get(imageDirWISERindustryURL);
-    let WISERpresentations = axios.get(imageDirWISERpresentationsURL);
+    let WISERreception = axios.get(imageDirWISERreceptionURL);
     let WISERteam = axios.get(imageDirWISERteamURL);
     let maincontentContainer = document.getElementsByClassName('main-content')[0];
 
-    axios.all([request, Musicians, WISERindustry, WISERpresentations, WISERteam]).then(axios.spread((...responses) => {
+    axios.all([request, Musicians, WISERindustry, WISERreception, WISERteam]).then(axios.spread((...responses) => {
         let web = responses[0].data;
         let Musicians = responses[1].data;
         let WISERindustry = responses[2].data;
-        let WISERpresentations = responses[3].data;
+        let WISERreception = responses[3].data;
         let WISERteam = responses[4].data;
         let webelements = web;
         let content = getContent(webelements);
@@ -36,7 +36,7 @@ window.onload = function () {
         '<a id="' + 4 + '-tab" onclick= "searchfunction2(\'' + 'WISER Presentations' + '\', ' + 4 + ')" class="nav-link" aria-current="page" >WISER Presentations</a></li>';
         content += '</ul></div>';
         content += '<div id="experts-content">';
-        let tabContent = [buildImageTabContent(WISERteam,'ex1-tabs-1','ex1-tab-1',true),buildImageTabContent(WISERindustry,'ex1-tabs-3','ex1-tab-3'),buildImageTabContent(Musicians,'ex1-tabs-2','ex1-tab-2'),buildImageTabContent(WISERpresentations,'ex1-tabs-4','ex1-tab-4')];
+        let tabContent = [buildImageTabContent(WISERteam,'ex1-tabs-1','ex1-tab-1',true),buildImageTabContent(WISERindustry,'ex1-tabs-3','ex1-tab-3'),buildImageTabContent(Musicians,'ex1-tabs-2','ex1-tab-2'),buildImageTabContent(WISERreception,'ex1-tabs-4','ex1-tab-4')];
         content = '<div class=tabs>' + createTabNavigation2(distincttabs, tabattribute, activeIndex);
         content += '<p></p>'
         content += buildTabContent2(distincttabs, tabattribute, tabContent, activeIndex) + '</div>';
