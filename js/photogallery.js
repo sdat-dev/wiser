@@ -33,7 +33,7 @@ window.onload = function () {
         content += '<li class="nav-item">' +
         '<a id="' + 3 + '-tab" onclick= "searchfunction2(\'' + 'Musicians' + '\', ' + 3 + ')" class="nav-link" aria-current="page" >Musicians</a></li>';
         content += '<li class="nav-item">' +
-        '<a id="' + 4 + '-tab" onclick= "searchfunction2(\'' + 'WISER Presentations' + '\', ' + 4 + ')" class="nav-link" aria-current="page" >WISER Presentations</a></li>';
+        '<a id="' + 4 + '-tab" onclick= "searchfunction2(\'' + 'WISER Receprion' + '\', ' + 4 + ')" class="nav-link" aria-current="page" >WISER Receprion</a></li>';
         content += '</ul></div>';
         content += '<div id="experts-content">';
         let tabContent = [buildImageTabContent(WISERteam,'ex1-tabs-1','ex1-tab-1',true),buildImageTabContent(WISERindustry,'ex1-tabs-3','ex1-tab-3'),buildImageTabContent(Musicians,'ex1-tabs-2','ex1-tab-2'),buildImageTabContent(WISERreception,'ex1-tabs-4','ex1-tab-4')];
