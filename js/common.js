@@ -257,9 +257,9 @@ let getContent = function (webelements, filename) {
         }
         else if (type == 'img') {
             if (element.hasOwnProperty('style'))
-                content += '<img src="https://sdat-dev.github.io/resources/wiser/assets/images/' + filename + '/' + element.content + '" alt="" style="' + element.style + '">';
+                content += '<img class="img img-fluid img-sm mb-5"  src="https://sdat-dev.github.io/resources/wiser/assets/images/' + filename + '/' + element.content + '" alt="" style="' + element.style + '">';
             else
-                content += '<img src="https://sdat-dev.github.io/resources/wiser/assets/images/' + filename + '/' + element.content + '" alt="" style="width: 100%;">';
+                content += '<img class="img img-fluid img-sm mb-5"  src="https://sdat-dev.github.io/resources/wiser/assets/images/' + filename + '/' + element.content + '" alt="" style="width: 100%;">';
         }
         else if (type == 'iframe') {
             content += '<iframe ' + element.content + '></iframe>';
@@ -392,7 +392,7 @@ addfooter = function (relativepath = ".") {
     let footer = document.getElementById("footer");
     let content = "";
     content +=
-        '<footer class="footer container-fluid">' +
+        '<footer class="footer container-fluid" >' +
         '<div class="region region-footer">' +
         '<section id="block-footer2020-2" data-block-plugin-id="block_content:58324575-ecf1-412b-b839-09d0cf593aef" class="block block-block-content">' +
 
