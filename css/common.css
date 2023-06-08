@@ -588,7 +588,7 @@ Primary use:    Common.css file used for styling header and
         width: 90%;
     }
     .body {
-        width:fit-content;
+        width:100%;
     }
    
     .header-title {
@@ -735,6 +735,7 @@ Primary use:    Common.css file used for styling header and
 }
 
 @media only screen and (min-width: 1192px) {
+  
     #landing-page-text-wrapper {
         bottom: 10%;
         width: 70%;
