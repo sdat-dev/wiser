@@ -734,6 +734,205 @@ Primary use:    Common.css file used for styling header and
     }
 }
 
+@media only screen and (min-width:4000px){
+   
+    /* for header content increase */
+    .header-title div{
+        font-size: 6rem !important;
+    }
+/* this is for navbar menu */
+    #navbar li{
+        font-size: 4rem !important;
+        margin-right: 30px;
+    }
+
+/* excel content body starts here  */
+    .content-wrapper p{
+        font-size: 5rem;
+    }
+    .content-wrapper span{
+        font-size: 8rem;
+    }
+    .content-wrapper li{
+        font-size: 4rem;
+    }
+
+    .panel-title > .btn{
+        font-size: 4rem !important;
+    }
+
+    .icon-container img {
+        width: 100px;
+    }
+    .expert-image{
+        width: 600px !important;
+        height: 600px !important;
+    }
+
+    .content-wrapper .img {
+        min-width:1800px ;
+        min-height: 1700px;
+    }
+
+    .content-wrapper{
+        min-height: calc(100% - 800px); /* Adjust the value based on the space you want to leave for the footer */
+        padding-bottom: 1600px; /* Adjust the value based on the space you want to leave for the footer */
+    }
+   
+    .purple-font {
+        font-size: 4em !important;
+    }
+    .content-header-no-margin {
+        font-size: 4em !important;
+    }
+    .content-header-no-margin *{
+        font-size: inherit;
+    }
+    .faculty-title{
+        font-size: 3em !important;
+    }
+
+    #search-box{
+        font-size: 2em !important;
+       
+    }
+    .content>#search-box,#search-button{
+        height: 100px;    
+    }
+    .content>#search-button{
+        width: 5%;
+    }
+
+
+
+    /* excel content ends here */
+
+    /* page carousel image height */
+   #page-header img{
+    max-height: 1200px !important; 
+   }
+
+   .carousel-item img{
+    height: 1200px !important;
+   }
+
+   #page-header h1{
+    font-size: 8rem !important;
+   }
+   #page-header p{
+    font-size: 4rem !important;
+   }
+   .footer-new{
+    min-height: 200px;
+   }
+   .region-footer{
+    max-height: 100px;
+   }
+
+   .footer-end *{
+    font-size: 2rem !important;
+   }
+}
+
+
+@media only screen and (min-width:2300px){
+   
+    /* for header content increase */
+    .header-title div{
+        font-size: 3rem !important;
+    }
+/* this is for navbar menu */
+    #navbar li{
+        font-size: 2rem !important;
+        margin-right: 30px;
+    }
+
+/* excel content body starts here  */
+    .content-wrapper p{
+        font-size: 2rem;
+    }
+    .content-wrapper span{
+        font-size: 4rem;
+    }
+    .content-wrapper li{
+        font-size: 2rem;
+    }
+
+    .panel-title > .btn{
+        font-size: 2rem !important;
+    }
+
+    .icon-container img {
+        width: 100px;
+    }
+    .expert-image{
+        width: 300px !important;
+        height: 300px !important;
+    }
+
+    .content-wrapper .img {
+        min-width:1000px ;
+        min-height: 1000px;
+    }
+
+    .content-wrapper{
+        min-height: calc(100% - 400px); /* Adjust the value based on the space you want to leave for the footer */
+        padding-bottom: 600px; /* Adjust the value based on the space you want to leave for the footer */
+    }
+   
+    .purple-font {
+        font-size: 2em !important;
+    }
+    .content-header-no-margin {
+        font-size: 2em !important;
+    }
+    .content-header-no-margin *{
+        font-size: inherit;
+    }
+    .faculty-title{
+        font-size: 1.5em !important;
+    }
+
+    #search-box{
+        font-size: 1em !important;
+       
+    }
+    .content>#search-box,#search-button{
+        height: 50px;    
+    }
+    .content>#search-button{
+        width: 2%;
+    }
+    /* excel content ends here */
+    /* page carousel image height */
+   #page-header img{
+    max-height: 800px !important; 
+   }
+
+   .carousel-item img{
+    height: 800px !important;
+   }
+
+   #page-header h1{
+    font-size: 4rem !important;
+   }
+   #page-header p{
+    font-size: 2rem !important;
+   }
+   .footer-new{
+    min-height: 200px;
+   }
+   .region-footer{
+    max-height: 100px;
+   }
+
+   .footer-end *{
+    font-size: 2rem !important;
+   }
+}
+
+
+
 @media only screen and (min-width: 1192px) {
   
     #landing-page-text-wrapper {

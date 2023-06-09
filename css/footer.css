@@ -178,7 +178,7 @@ footer.footer .footer-new a, footer.footer .footer-new p {
 
 @media (min-width:4000px) {
     #footer {
-        position: fixed;
+        position: sticky;
         width: 100%;
         bottom: 0;
     }
