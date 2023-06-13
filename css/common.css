@@ -774,6 +774,13 @@ Primary use:    Common.css file used for styling header and
         min-height: 1700px;
     }
 
+    .speakers-info .title{
+        width: 100% !important;
+    }
+    .speakers-info .display-flex{
+        gap: 200px !important;
+    }
+
     .content-wrapper{
         min-height: calc(100% - 800px); /* Adjust the value based on the space you want to leave for the footer */
         padding-bottom: 1600px; /* Adjust the value based on the space you want to leave for the footer */
@@ -835,7 +842,7 @@ Primary use:    Common.css file used for styling header and
 }
 
 
-@media only screen and (min-width:2300px){
+@media only screen and (min-width:2600px){
    
     /* for header content increase */
     .header-title div{
@@ -874,6 +881,20 @@ Primary use:    Common.css file used for styling header and
         min-width:1000px ;
         min-height: 1000px;
     }
+    .speakers-info .title{
+        width: 100% !important;
+    }
+
+    .display-flex > div:not(:last-child) {
+        margin-right: 100px !important; /* Adjust the value to your desired padding */
+        margin-bottom: 200px !important;
+        
+    }
+
+    .main-content > div a p span span:last-child {
+        font-size: 26px !important; /* Adjust the font size as needed */
+      }
+  
 
     .content-wrapper{
         min-height: calc(100% - 400px); /* Adjust the value based on the space you want to leave for the footer */
