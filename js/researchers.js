@@ -350,7 +350,7 @@ let generateProjectsContent = function (projects) {
         }
     }
     linkContent = (projectcount > 0) ?
-        '<b class = "purple-font">Ongoing Research/Scholarship Related Projects</b><ul class = "sub-list">'
+        '<b class = "purple-font">PI on potential project(s)</b><ul class = "sub-list">'
         + linkContent + '</ul>' : '';
     return linkContent;
 }
