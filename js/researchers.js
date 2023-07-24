@@ -94,6 +94,42 @@ let buildResearchersContent = function (experts, scrollloc) {
     return content;
 }
 
+const sortTheUalbanyWeatherEnterprise = (researchers) => {
+    const myOrder = [
+        'cthorncroft@albany.edu',
+        'jwoodcock2@albany.edu',
+        'rperez@albany.edu',
+        'jfreedman@albany.edu',
+        'nbassill@albany.edu',
+        'jgonzalezcruz@ccny.cuny.edu',
+        'jwang20@albany.edu',
+        'ksulia@albany.edu',
+        'rfovell@albany.edu',
+        'smiller@albany.edu',
+        'pal-annabi@albany.edu'
+    ]
+
+    let sortedResearchers = [];
+    let notInListFaculty = []; //to handle case when new faculty added which are not in myorder array
+
+    for (let researcher of researchers) {
+        if (myOrder.includes(researcher['Email'])) {
+            sortedResearchers[myOrder.indexOf(researcher['Email'])] = researcher
+        }
+        else {
+            notInListFaculty.push(researcher)
+        }
+    }
+
+    //concat the notinlist with finalsorted
+    sortedResearchers = sortedResearchers.concat(notInListFaculty);
+
+    let finalSortedList = sortedResearchers.filter(record => record !== undefined);  //edge case when a faculty is deleted and that member in myorder list
+
+    return finalSortedList;
+}
+
+
 //Start with level1 accordion and build one by one the levels going down.
 //this is nestted accordion that can go upto 4 levels
 let counter = 1;
@@ -127,18 +163,25 @@ let buildUniversityResearchers = function (tabId, tabexperts, scrollloc) {
         if (level2s.length > 0) {
             let distinctLevel2s = getDistinctAttributes(level2s, 'Department');
             distinctLevel2s.sort();
+            let allResearchersUnderSchoolDvson = [];
             distinctLevel2s.forEach(function (level2) {
                 //filter level3 
                 let level3s = level2s.filter(function (expert) {
                     return expert.Department == level2;
                 });
                 level3s.sort((a, b) => b.firstName - a.firstName)
-                //for level2s build simple list
-                let value = buildUniversityResearcherElements(level3s, scrollloc);
-                level2Elem += value["content"];
-                if (value["expanded"])
-                    expanded = value["expanded"];
+                allResearchersUnderSchoolDvson = allResearchersUnderSchoolDvson.concat(level3s); //group researchers based on division           
             });
+            //
+            if (level1 === 'UAlbany Weather Enterprise') { //sort order only for this division
+                allResearchersUnderSchoolDvson = sortTheUalbanyWeatherEnterprise(allResearchersUnderSchoolDvson);
+            }
+            //for level2s build simple list
+            let value = buildUniversityResearcherElements(allResearchersUnderSchoolDvson, scrollloc);
+            level2Elem += value["content"];
+            if (value["expanded"])
+                expanded = value["expanded"];
+            //
         }
         if (level1 == "") {
             level1 = "Other";
